@@ -13,8 +13,11 @@
     <fieldset>
     <header>
         <br>
-       <input type="text" id="Create A Task" placeholder="Create A Task" autocomplete="on" required>
+       <h1>Create A Task</h1>
     </header>
+    <br>
+    <input type="text" placeholder="Type task here" autocomplete="on" required id="input"/>
+    <ul id="tasks"></ul>
     <br>
 <h2>Tasks</h3>
 <ul>
@@ -27,19 +30,18 @@
 
    <h2>Completed</h2>
 <p>
-    <input type="radio" name="task" id="Create the Github repo" value="Create the Github repo">
+    <input type="checkbox" name="task" id="Create the Github repo" value="Create the Github repo"/>
     <label for="Create the Github repo">Create the Github repo</label>
 </p>
    <p>
-    <input type="radio" name="task" id="Add the README.md file" value="Add the README.md file">
+    <input type="checkbox" name="task" id="Add the README.md file" value="Add the README.md file"/>
     <label for="Add the README.md file">Add the README.md file</label>
    </p>
    <p>
-    <input type="radio" name="task" id="Create my first commit" value="Create my first commit">
+    <input type="checkbox" name="task" id="Create my first commit" value="Create my first commit"/>
     <label for="Create my first commit">Create my first commit</label>
    </p>
 </fieldset>
-
     <style>
         body{
              border-top: 10px;
@@ -76,14 +78,27 @@ p{
 }
 
     </style>
-
 </body>
+    <script>
+        const input = document.getElementById("input");
+        const tasksSection = document.getElementById("tasks");
 
+        input.onchange = (event) => {
+           let inputValue = event?.target?.value;
+    
+           const newTaskDomElement = document.createElement("li");
+           console.log("element -> ", newTaskDomElement);
 
+           newTaskDomElement.textContent = inputValue;
+           tasksSection.appendChild(newTaskDomElement);
 
+           //fectching the checkbox by id
+           var doc = document.getElementById("check");
 
-
-
-
-
+           // changing the state of checkbox to checked
+           doc.checked = true;
+        };
+        
+       
+    </script>
 </html>
